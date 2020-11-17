@@ -1,0 +1,145 @@
+Notes : Tutorial Building Custom ROM
+
+
+#1 Search ROM source on github.com
+
+
+
+
+#2 Find and open "manifest"
+
+Notes : Manifest contain clmmand to sync and build
+
+
+
+
+
+#3 add manifest
+ repo init -u git://github.com/%ROMSource/manifest.git -b ([branch] Android Version)
+ 
+ 
+ 
+ 
+#4 Sync project
+repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
+
+
+
+
+#5 Clone Device Tree
+git clone -b [branch] [device tree url] [/device/brand[Ex=lenovo]/model]
+
+
+
+
+#6 Clone Device Kernel
+git clone -b [branch] [kernel source url] [/kernel/brand/model]
+
+
+
+
+#7 Clone Vendor Tree
+git clone -b [branch] [vendor tree url] [/vendor/brand/model]
+
+
+
+
+#8 Configuring Device tree
+   #Go to device/brand/model directory
+
+   #rename lineage_%brand%.mk to [%custom rom name% Ex=aex_a6000.mk]
+        terminal code $mv lineage_a6000.mk aex_a6000.mk
+
+   #edit %cusrom_a6000.mk%
+         or use nano %cusrom_a6000.mk%
+###############################################
+              CHANGE :
+###############################################
+                   PRODUCT_NAME := lineage_a6000 
+              ###TO            :###
+                   PRODUCT_NAME := %rom name%_a6000
+###############################################
+                   # Trust
+                   PRODUCT_PACKAGES += \
+                   vendor.lineage.trust@1.0-service
+###########TO            :############
+                   # Trust
+                   PRODUCT_PACKAGES += \
+                   vendor.%rom name%.trust@1.0-service
+###############################################
+THEN SAVE
+
+
+
+
+#9 Configuring Device tree 2
+   #edit AndAndAndroidProducts.mk
+         Terminal code $nano AndroidProducts.mk
+###############################################
+             CHANGE :
+###############################################
+               PRODUCT_MAKEFILES := \
+                    $(LOCAL_DIR)/lineage_a6000.mk
+ 
+              # Lunch choices
+              COMMON_LUNCH_CHOICES := \
+                   lineage_a600-userdebug 
+###########TO            :############
+               PRODUCT_MAKEFILES := \
+                    $(LOCAL_DIR)/%rom name%_a6000.mk
+ 
+               # Lunch choices
+               COMMON_LUNCH_CHOICES := \
+                    %rom name%_a6000-userdebug  
+############################################### 
+THEN SAVE
+
+
+
+
+#10 Start Build
+
+NOTE: You can find this command in manifest
+
+. build/envsetup.sh
+  lunch %rom name%_codename-userdebug
+  
+Example
+
+. build/envsetup.sh
+  lunch %rom name%_a6000-userdebug
+
+
+
+
+#11 Start Build
+
+Note: You can find this command in manifest
+
+  mka %rom name% -j$(nproc --all)
+  
+###############################################
+
+
+
+
+NOTE: If Build Failed and show error in kernel 
+            edit Kernel cross path in BoardConfig.mk at device tree directory
+            
+            Example using arm-none-eabi
+            
+###############################################            
+            TOP_PATH := $(realpath $(TOP))
+            KERNEL_TOOLCHAIN := /usr/bin
+            TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-none-eabi-
+ ###############################################           
+            
+            
+
+                 
+               
+                   
+                   
+                   
+
+
