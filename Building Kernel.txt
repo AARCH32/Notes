@@ -1,0 +1,42 @@
+Notes: Tutorial to Build Android kernel
+
+#Suggested system is Ubuntu
+
+##1 Clone Kernel Source
+$git clone -b [branch] [kernel link] --depth 1 [directory name]
+
+Info : 
+#Exampel For Branch= "lineage-17.1"
+#--depth 1 for compressing object, Example 700Mb Compressed to 100Mb
+
+
+##2 Build Tools
+sudo apt-get install build-essential lzop ccache make python flex unzip bc libncurses5-dev liblz4-tool curl clang git [gcc-arm-none-eabi]
+gcc-arm-none-eabi can be replaced with other toolchain
+
+
+##3 Building Kernel
+
+Note: Use $make menuconfig to configuring kernel or edit at %source%/arch/%arch%/configs/device.defconfig
+
+#Example 1
+$make ARCH=%arch% device.defconfig
+$make ARCH=%arch% CROSS_COMPILE=/usr/bin/arm-none-eabi- zImage
+
+#Example 2
+$export ARCH=%arch%
+$export SUBARCH=%arch%
+$export KBUILD_BUILD_USER=%user%
+$export CROSS_COMPILE=/usr/bin/arm-none-eabi-
+$make device.defconfig
+$make menuconfig (optional)
+$make -j4 (depends core number)
+
+NOTE: %arch% is Device Architecture
+
+
+
+
+
+
+
