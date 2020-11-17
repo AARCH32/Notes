@@ -6,45 +6,51 @@ Notes : Tutorial Building Custom ROM
 
 
 
+
 #2 Find and open "manifest"
 
-Notes : Manifest contain clmmand to sync and build
+Notes : Manifest contain command to sync and build
+
+
+
+
+#3 mkdir %cusrom% && cd %cusrom%
 
 
 
 
 
-#3 add manifest
+#4 add manifest
  repo init -u git://github.com/%ROMSource/manifest.git -b ([branch] Android Version)
  
  
  
  
-#4 Sync project
+#5 Sync project
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 
 
 
-#5 Clone Device Tree
+#6 Clone Device Tree
 git clone -b [branch] [device tree url] [/device/brand[Ex=lenovo]/model]
 
 
 
 
-#6 Clone Device Kernel
+#7 Clone Device Kernel
 git clone -b [branch] [kernel source url] [/kernel/brand/model]
 
 
 
 
-#7 Clone Vendor Tree
+#8 Clone Vendor Tree
 git clone -b [branch] [vendor tree url] [/vendor/brand/model]
 
 
 
 
-#8 Configuring Device tree
+#9 Configuring Device tree
    #Go to device/brand/model directory
 
    #rename lineage_%brand%.mk to [%custom rom name% Ex=aex_a6000.mk]
@@ -72,7 +78,7 @@ THEN SAVE
 
 
 
-#9 Configuring Device tree 2
+#10 Configuring Device tree 2
    #edit AndroidProducts.mk
          Terminal code $nano AndroidProducts.mk
 ###############################################
@@ -97,7 +103,7 @@ THEN SAVE
 
 
 
-#10 Start Build
+#11 Start Build
 
 NOTE: You can find this command in manifest
 
@@ -112,7 +118,7 @@ Example
 
 
 
-#11 Start Build
+#12 Start Build
 
 Note: You can find this command in manifest
 
