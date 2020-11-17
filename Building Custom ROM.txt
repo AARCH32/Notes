@@ -73,7 +73,7 @@ THEN SAVE
 
 
 #9 Configuring Device tree 2
-   #edit AndAndAndroidProducts.mk
+   #edit AndroidProducts.mk
          Terminal code $nano AndroidProducts.mk
 ###############################################
              CHANGE :
