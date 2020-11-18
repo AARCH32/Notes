@@ -19,38 +19,51 @@ Notes : Manifest contain command to sync and build
 
 
 
+#4 type "screen -S"
 
-#4 add manifest
+
+
+#5 type "screen -x"
+
+
+
+#6 type "screen -rD %number%.%rom directory%
+Note: find by use "screen -x"
+
+
+
+
+#7 add manifest
  repo init -u git://github.com/%ROMSource/manifest.git -b ([branch] Android Version)
  
  
  
  
-#5 Sync project
+#8 Sync project
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 
 
 
-#6 Clone Device Tree
+#9 Clone Device Tree
 git clone -b [branch] [device tree url] [/device/brand[Ex=lenovo]/model]
 
 
 
 
-#7 Clone Device Kernel
+#10 Clone Device Kernel
 git clone -b [branch] [kernel source url] [/kernel/brand/model]
 
 
 
 
-#8 Clone Vendor Tree
+#11 Clone Vendor Tree
 git clone -b [branch] [vendor tree url] [/vendor/brand/model]
 
 
 
 
-#9 Configuring Device tree
+#12 Configuring Device tree
    #Go to device/brand/model directory
 
    #rename lineage_%brand%.mk to [%custom rom name% Ex=aex_a6000.mk]
@@ -78,7 +91,7 @@ THEN SAVE
 
 
 
-#10 Configuring Device tree 2
+#13 Configuring Device tree 2
    #edit AndroidProducts.mk
          Terminal code $nano AndroidProducts.mk
 ################################################################
@@ -103,7 +116,7 @@ THEN SAVE
 
 
 
-#11 Start Build
+#14 Start Build
 
 NOTE: You can find this command in manifest
 
@@ -118,7 +131,7 @@ Example
 
 
 
-#12 Start Build
+#15 Start Build
 
 Note: You can find this command in manifest
 
