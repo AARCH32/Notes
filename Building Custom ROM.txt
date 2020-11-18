@@ -1,4 +1,5 @@
 Notes : Tutorial Building Custom ROM
+BECAUSE INTERNET IN INDONESIA IS SHIT, BUY FUCKING VPW
 
 
 #1 Search ROM source on github.com
@@ -20,10 +21,12 @@ Notes : Manifest contain command to sync and build
 
 
 #4 type "screen -S"
+Basically "terminal tab" or "window"
 
 
 
 #5 type "screen -x"
+To show current tab
 
 
 
