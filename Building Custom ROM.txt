@@ -49,19 +49,19 @@ repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 
 #9 Clone Device Tree
-git clone -b [branch] [device tree url] [/device/brand[Ex=lenovo]/model]
+git clone -b [branch] [device tree url] [device/brand[Ex=lenovo]/model]
 
 
 
 
 #10 Clone Device Kernel
-git clone -b [branch] [kernel source url] [/kernel/brand/model]
+git clone -b [branch] [kernel source url] [kernel/brand/model]
 
 
 
 
 #11 Clone Vendor Tree
-git clone -b [branch] [vendor tree url] [/vendor/brand/model]
+git clone -b [branch] [vendor tree url] [vendor/brand/model]
 
 
 
